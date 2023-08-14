@@ -14,7 +14,7 @@ const TodoPage = () => {
     }
 
     const handleClearAllItems = () => {
-        const deletedItems = list.map(item => ({ id: item.id, description: item.description, done: true }))
+        const deletedItems = list.map(item => !item.pinned ? ({ ...item, done: true }): item)
         setList(deletedItems);
     }
 

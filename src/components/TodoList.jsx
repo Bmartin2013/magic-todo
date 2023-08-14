@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import EditTodoItem from "./EditTodoItem";
+import TodoListButtons from "./TodoListButtons";
 
 const TodoList = ({ list, updateItem }) => {
     const [isEditing, setIsEditing] = useState(false);
@@ -9,7 +10,12 @@ const TodoList = ({ list, updateItem }) => {
         setIsEditing(false);
     }
 
-    const handleMarkItemAsDone = (item) => updateItem(item.id, { ...item, done: true })
+    const handleMarkItemAsDone = (item) => !item.pinned && updateItem(item.id, { ...item, done: true })
+
+    const handlePin = (item) => {
+        const isPinned = item.pinned;
+        updateItem(item.id, { ...item, pinned: !isPinned })
+    }
 
     return (
         <div className="cnt-todo-list">
@@ -17,10 +23,15 @@ const TodoList = ({ list, updateItem }) => {
                 {list?.map((item) =>
                     <li key={item.id}>
                         {item.description}
-                        {!isEditing && <button onClick={() => setIsEditing(item.id)}>edit item</button>}
+                        <TodoListButtons
+                            showEditButton={!isEditing}
+                            setEditItem={() => setIsEditing(item.id)}
+                            handleMarkItemAsDone={() => handleMarkItemAsDone(item)}
+                            handlePin={() => handlePin(item)}
+                            isPinned={item.pinned}
+                        />
                         {isEditing === item.id && <EditTodoItem currentDescription={item.description}
                             submitEdition={(description) => submitEdition(item, description)} />}
-                        <button onClick={() => handleMarkItemAsDone(item)}>Mark as done</button>
                     </li>)}
             </ul>
         </div>

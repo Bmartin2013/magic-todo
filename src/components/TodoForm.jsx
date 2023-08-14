@@ -7,7 +7,7 @@ const TodoForm = ({ handleAddItem }) => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        description && handleAddItem({ done: false, id: new Date().getTime(), description })
+        description && handleAddItem({ done: false, id: new Date().getTime(), description, pinned: false })
         setDescription("");
     }
 
