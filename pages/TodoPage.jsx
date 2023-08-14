@@ -1,32 +1,35 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import "./todoPage.scss"
+import TodoForm from "../components/TodoForm";
+import TodoList from "../components/TodoList";
 
 const TodoPage = () => {
-    const [note, setNote] = useState("");
-    const [todoItems, setTodoItems] = useState([]);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        setTodoItems([...todoItems, note])
+    const [list, setList] = useState([]);
+    const filteredList = list.filter(item => !item.done && list.length > 0)
+
+    const handleAddItem = addItem => {
+        setList([...list, addItem]);
     }
+
+    const handleClearAllItems = () => {
+        const deletedItems = list.map(item => ({ id: item.id, description: item.description, done: true }))
+        setList(deletedItems);
+    }
+
+    const updateItem = (id, updatedItem) => {
+        const updatedList = list.map((item) =>
+            item.id === id ? updatedItem : item
+        );
+        setList(updatedList);
+    };
+
 
     return (
         <>
-            <div className="cnt-todo-form">
-                <form className="todo-form" onSubmit={handleSubmit}>
-                    <label>Todo item:</label>
-                    <input type="text" name="item" value={note} onChange={(e) => setNote(e.target.value)} />
-                    <input type="submit" value="save" />
-                </form>
-            </div>
-
-            <div className="cnt-todo-list">
-                <ul>
-                    {todoItems?.map(item => <li>{item}</li>)}
-                </ul>
-
-            </div>
-
+            <TodoForm handleAddItem={handleAddItem} />
+            <TodoList list={filteredList} updateItem={updateItem} />
+            {filteredList.length > 0 && <button onClick={handleClearAllItems}>Clear All</button>}
         </>
     )
 }
