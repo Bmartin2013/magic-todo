@@ -9,7 +9,6 @@ const TodoList = ({ list, updateItem }) => {
         setIsEditing(false);
     }
 
-
     const handleMarkItemAsDone = (item) => updateItem(item.id, { ...item, done: true })
 
     return (
