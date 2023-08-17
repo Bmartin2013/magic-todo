@@ -3,6 +3,7 @@ import Indicator from "./Indicator";
 import "./IndicatorList.scss";
 
 const IndicatorList = ({ list }) => {
+ 
   const completedItems = useMemo(
     () => list.filter((item) => item.done).length,
     [list]

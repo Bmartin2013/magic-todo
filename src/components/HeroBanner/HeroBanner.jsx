@@ -4,7 +4,7 @@ import TodoList from "../TodoList/TodoList";
 import "./HeroBanner.scss";
 
 
-const HeroBanner = ({ handleAddItem, filteredList, updateItem }) => {
+const HeroBanner = ({ handleAddItem, list, updateItem }) => {
   return (
     <div className="cnt-hero-banner">
       <ul className=" hero-banner glassy">
@@ -17,7 +17,7 @@ const HeroBanner = ({ handleAddItem, filteredList, updateItem }) => {
           <TodoForm handleAddItem={handleAddItem} />
         </li>
         <li className="todo-list">
-          <TodoList list={filteredList} updateItem={updateItem} />
+          <TodoList list={list} updateItem={updateItem} />
         </li>
       </ul>
     </div>
