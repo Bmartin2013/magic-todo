@@ -1,5 +1,5 @@
 import React from "react";
-import "./todolist.scss";
+import "./todoList.scss";
 
 const TodoList = ({ list, updateItem }) => {
   const handleMarkItemAsDone = (item) =>

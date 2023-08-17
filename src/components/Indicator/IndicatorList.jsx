@@ -1,8 +1,8 @@
 import React, { useMemo } from "react";
 import Indicator from "./Indicator";
-import "./IndicatorsList.scss";
+import "./IndicatorList.scss";
 
-const IndicatorsList = ({ list }) => {
+const IndicatorList = ({ list }) => {
   const completedItems = useMemo(
     () => list.filter((item) => item.done).length,
     [list]
@@ -30,4 +30,4 @@ const IndicatorsList = ({ list }) => {
   );
 };
 
-export default IndicatorsList;
+export default IndicatorList;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import HeroBanner from "../components/HeroBanner";
-import IndicatorsList from "../components/IndicatorsList";
+import HeroBanner from "../components/HeroBanner/HeroBanner";
+import IndicatorList from "../components/Indicator/IndicatorList";
 
 const TodoPage = () => {
   const [list, setList] = useState([]);
@@ -21,7 +21,7 @@ const TodoPage = () => {
   return (
     <>
       <HeroBanner handleAddItem={handleAddItem} filteredList={filteredList} updateItem={updateItem} />
-      <IndicatorsList list={list} />
+      <IndicatorList list={list} />
     </>
   );
 };

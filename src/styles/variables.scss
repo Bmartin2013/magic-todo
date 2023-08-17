@@ -1,0 +1,58 @@
+// GENERAL VARIABLES
+$zero:0;
+$none:none;
+$no-padding:$zero;
+$no-margin:$zero;
+$no-border:$none;
+$bold:bold;
+$full-width:100%;
+$mid-width:50%;
+
+// INDICATOR
+$indicator-width: 50%;
+$indicator-margin-x: 2%;
+$indicator-letter-spacing:2px;
+$indicator-title-margin: 10px;
+$indicator-title-font: 20px;
+$indicator-value-font: 90px;
+$indicator-shadow-inset:12px;
+$indicator-shadow-offset-x:12px;
+$indicator-shadow-offset-y:16px;
+$indicator-shadow-blur-radius: $zero;
+$indicator-shadow-2-inset:-8px;
+$indicator-shadow-2-offset-x:-8px;
+$indicator-shadow-2-offset-y:12px;
+$indicator-shadow-2-blur-radius: $zero;
+
+//HERO BANNER
+$hero-banner-height:500px;
+$hero-banner-padding: 1em;
+$hero-banner-container-width:50%;
+$hero-banner-container-padding:2%;
+
+// GLASSY
+$glassy-border-radius: 10px;
+$glassy-inset: $zero;
+$glassy-offset-x:8px;
+$glassy-offset-y:32px;
+$glassy-blur-radius: $zero;
+$glassy-border:1px;
+
+//TD ITEM
+$todo-item-margin:10px;
+$todo-letter-spacing:1px;
+$todo-font-size:18px;
+$input-padding:7px;
+
+// CLARIFICATION
+$padding-label-x:3px;
+$padding-label-y:31px;
+$label-font-size:21px;
+$label-rotated-top:4px;
+$label-rotated-left:-25px;
+$label-transform-rotate:rotate(333deg);
+
+$hero-title-shadow-inset:2px; 
+$hero-title-offset-x:4px; 
+$hero-title-offset-y:4px; 
+$hero-title-letter-spacing:4px;

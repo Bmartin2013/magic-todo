@@ -1,11 +1,17 @@
 @import "./colors.scss";
+@import "./variables.scss";
+
+@mixin center-flex{
+    display: flex;
+    justify-content: center;
+}
 
 @mixin glassy($backdrop-filter: 5px) {
-  border: none;
+  border: $no-border;
   background: $glassy-background-color;
-  box-shadow: 0 8px 32px 0 $glassy-shadow-color;
-  border-radius: 10px;
-  border: 1px solid $glassy-border-color;
+  box-shadow: $glassy-inset $glassy-offset-x $glassy-offset-y $glassy-blur-radius $glassy-shadow-color;
+  border-radius: $glassy-border-radius;
+  border: $glassy-border solid $glassy-border-color;
   backdrop-filter: blur($backdrop-filter);
   -webkit-backdrop-filter: blur($backdrop-filter);
 }
@@ -16,8 +22,8 @@
   border-radius: $radius;
   color: $white;
   background: $indicator-gradient;
-  box-shadow: 12px 12px 16px 0 $indicator-gradient-1,
-    -8px -8px 12px 0 $indicator-gradient-2;
+  box-shadow: $indicator-shadow-inset $indicator-shadow-offset-x $indicator-shadow-offset-y $indicator-shadow-blur-radius $indicator-gradient-1,
+  $indicator-shadow-2-inset $indicator-shadow-2-offset-x $indicator-shadow-2-offset-y $indicator-shadow-2-blur-radius $indicator-gradient-2;
 }
 
 @mixin indicator {
@@ -27,18 +33,17 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    letter-spacing: 2px;
-    font-weight: bold;
-    list-style-type: none;
-    padding: 0;
+    letter-spacing: $indicator-letter-spacing;
+    font-weight: $bold;
+    padding: $no-padding;
 
     li:first-child {
-      margin: 10px;
-      font-size: 20px;
+      margin: $indicator-title-margin;
+      font-size: $indicator-title-font;
     }
 
     li:nth-child(2) {
-      font-size: 90px;
+      font-size: $indicator-value-font;
     }
   }
 }
@@ -47,15 +52,15 @@
   color: $white;
   background-color: $black;
   width: fit-content;
-  font-weight: 700;
-  padding: 3px 31px;
-  font-size: 21px;
-  
+  font-weight: $bold;
+  padding: $padding-label-x $padding-label-y;
+  font-size: $label-font-size;
+
   &.rotated {
     position: absolute;
-    top: 4px;
-    left: -25px;
-    transform: rotate(333deg);
+    top: $label-rotated-top;
+    left: $label-rotated-left;
+    transform: $label-transform-rotate;
   }
 }
 
@@ -67,8 +72,8 @@
 
 @mixin hero-title($size: 30px) {
   color: $hero-title-color;
-  text-shadow: 2px 4px 4px $hero-title-shadow;
-  letter-spacing: 4px;
+  text-shadow: $hero-title-shadow-inset $hero-title-offset-x $hero-title-offset-y $hero-title-shadow;
+  letter-spacing: $hero-title-letter-spacing;
   font-size: $size;
 }
 
@@ -78,12 +83,12 @@
 
     input {
       flex-grow: 1;
-      padding: 7px;
+      padding: $input-padding;
       @include glassy;
     }
 
     ::placeholder {
-      letter-spacing: 1px;
+      letter-spacing: $todo-letter-spacing;
     }
 
     :focus {

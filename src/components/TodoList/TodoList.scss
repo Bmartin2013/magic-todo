@@ -1,21 +1,25 @@
-@import "../styles/mixins.scss";
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
+
 
 .cnt-todo-list {
   width: 85%;
-  min-height: 100%;
+  min-height: $full-width;
   display: flex;
   @include glassy;
+  
 
   ul {
-    width: 100%;
-    list-style-type: none;
+    width: $full-width;
+    flex-direction: column;
+    margin: $no-margin;
   }
 
   li {
-    margin: 10px auto;
+    margin: $todo-item-margin;
     color: $hero-description-color;
-    letter-spacing: 1px;
-    font-size: 18px;
+    letter-spacing: $todo-letter-spacing;
+    font-size: $todo-font-size;
   }
 
 /* Customize the label (the container) */
