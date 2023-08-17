@@ -1,0 +1,49 @@
+@import "../styles/mixins.scss";
+@import "../styles/colors.scss";
+
+.cnt-hero-banner {
+  background-image: $hero-gradient;
+
+  height: 500px;
+  padding: 1em;
+  display: flex;
+
+  .glassy {
+    @include glassy(4.5px);
+  }
+
+  .clarification {
+    @include clarification-label;
+  }
+
+  h1.title {
+    @include hero-title;
+    margin: 0;
+  }
+
+  p.description {
+    @include hero-description;
+  }
+
+  ul {
+    margin: auto;
+    width: 50%;
+    padding: 2%;
+    display: inherit;
+    list-style-type: none;
+
+    li {
+      width: inherit;
+      flex-direction: column;
+      display: flex;
+    }
+
+    li:not(:first-child) {
+      align-items: end;
+    }
+
+    li:first-child {
+      @include hero-input-form;
+    }
+  }
+}

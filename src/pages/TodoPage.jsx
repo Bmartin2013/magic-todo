@@ -1,38 +1,29 @@
-import React, { useState, useMemo } from "react"
-import TodoForm from "../components/TodoForm";
-import TodoList from "../components/TodoList";
-import "./todoPage.scss"
+import React, { useState } from "react";
+import HeroBanner from "../components/HeroBanner";
+import IndicatorsList from "../components/IndicatorsList";
 
 const TodoPage = () => {
+  const [list, setList] = useState([]);
 
-    const [list, setList] = useState([]);
-    const completedItems = useMemo(() => list.filter(item => item.done).length, [list])
-    const filteredList = list.filter(item => !item.done && list.length > 0)
+  const filteredList = list.filter((item) => !item.done && list.length > 0);
 
-    const handleAddItem = addItem => {
-        setList([...list, addItem]);
-    }
+  const handleAddItem = (addItem) => {
+    setList([...list, addItem]);
+  };
 
-    const handleClearAllItems = () => {
-        const deletedItems = list.map(item => !item.pinned ? ({ ...item, done: true }): item)
-        setList(deletedItems);
-    }
+  const updateItem = (id, updatedItem) => {
+    const updatedList = list.map((item) =>
+      item.id === id ? updatedItem : item
+    );
+    setList(updatedList);
+  };
 
-    const updateItem = (id, updatedItem) => {
-        const updatedList = list.map((item) =>
-            item.id === id ? updatedItem : item
-        );
-        setList(updatedList);
-    };
-
-    return (
-        <>
-            <TodoForm handleAddItem={handleAddItem} />
-            <TodoList list={filteredList} updateItem={updateItem} />
-            {filteredList.length > 0 && <button onClick={handleClearAllItems}>Clear All</button>}
-            <p>completed items: {completedItems}</p>
-        </>
-    )
-}
+  return (
+    <>
+      <HeroBanner handleAddItem={handleAddItem} filteredList={filteredList} updateItem={updateItem} />
+      <IndicatorsList list={list} />
+    </>
+  );
+};
 
 export default TodoPage;

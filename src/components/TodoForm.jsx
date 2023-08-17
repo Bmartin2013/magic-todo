@@ -1,24 +1,31 @@
-import React, { useState } from 'react';
-import "./TodoForm.scss"
+import React, { useState } from "react";
 
+const TodoForm = ({ handleAddItem, className }) => {
+  const [description, setDescription] = useState("");
+  const baseItem = {
+    done: false,
+    id: new Date().getTime(),
+    pinned: false,
+  };
 
-const TodoForm = ({ handleAddItem }) => {
-    const [description, setDescription] = useState("");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    description && handleAddItem({ ...baseItem, description });
+    setDescription("");
+  };
 
-    const handleSubmit = e => {
-        e.preventDefault();
-        description && handleAddItem({ done: false, id: new Date().getTime(), description, pinned: false })
-        setDescription("");
-    }
-
-    return (<div className='cnt-todo-form'>
-        <form onSubmit={handleSubmit} className='todo-form'>
-            <label>Todo item:</label>
-            <input type='text' value={description} onChange={e => { setDescription(e.target.value) }} />
-            <input type="submit" name='save' />
-        </form>
-    </div>
-    )
-}
+  return (
+    <form onSubmit={handleSubmit} className={className}>
+      <input
+        type="text"
+        placeholder="Write your task here and press enter"
+        value={description}
+        onChange={(e) => {
+          setDescription(e.target.value);
+        }}
+      />
+    </form>
+  );
+};
 
 export default TodoForm;
