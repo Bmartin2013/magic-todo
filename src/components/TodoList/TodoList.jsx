@@ -1,17 +1,24 @@
 import React from "react";
-import "./todoList.scss";
 import classnames from "classnames";
+import "./todoList.scss";
 
-const TodoList = ({ list, updateItem }) => {
+const TodoList = ({ list, updateItem, handlePin }) => {
   const handleMarkItemAsDone = (item) =>
-    !item.pinned && updateItem(item.id, { ...item, done: item.done ? !item.done : true });
+    updateItem(item.id, { ...item, done: item.done ? !item.done : true });
 
   return (
-    <div className="cnt-todo-list">
+    <div class="cnt-todo-list">
       <ul>
+        <li class="todo-title">List Preview</li>
         {list?.map((item) => (
-          <li key={item.id} className={classnames("", { 'done': item.done })}>
-            <label className="container">
+          <li
+            key={item.id}
+            className={classnames("cnt-list-item", {
+              done: item.done,
+              pinned: item.pinned,
+            })}
+          >
+            <label class="container">
               <input
                 type="checkbox"
                 onChange={() => handleMarkItemAsDone(item)}
@@ -19,8 +26,15 @@ const TodoList = ({ list, updateItem }) => {
               <span className="checkmark"></span>
               {item.description}
             </label>
+            <button onClick={() => handlePin(item)} className="pin">
+              {item.pinned ? "Pinned" : "Pin"}
+            </button>
           </li>
         ))}
+        {/* blur the ones that are covered by this footer */}
+        {list.length > 5 && (
+          <li className="todo-footer">Click here to enjoy the full app</li>
+        )}
       </ul>
     </div>
   );

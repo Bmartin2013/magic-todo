@@ -5,8 +5,6 @@ import IndicatorList from "../components/Indicator/IndicatorList";
 const TodoPage = () => {
   const [list, setList] = useState([]);
 
-  // const filteredList = list.filter((item) => !item.done && list.length > 0);
-
   const handleAddItem = (addItem) => {
     setList([...list, addItem]);
   };
@@ -18,9 +16,14 @@ const TodoPage = () => {
     setList(updatedList);
   };
 
+  const handlePin = (item) => {
+    const isPinned = item.pinned;
+    updateItem(item.id, { ...item, pinned: !isPinned });
+  };
+
   return (
     <>
-      <HeroBanner handleAddItem={handleAddItem} list={list} updateItem={updateItem} />
+      <HeroBanner handleAddItem={handleAddItem} list={list} updateItem={updateItem} handlePin={handlePin} />
       <IndicatorList list={list} />
     </>
   );

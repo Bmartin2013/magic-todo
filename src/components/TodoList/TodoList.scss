@@ -12,82 +12,146 @@
     width: $full-width;
     flex-direction: column;
     margin: $no-margin;
+    overflow: hidden;
   }
 
   li {
-    margin: $todo-item-margin;
+    margin-top: $todo-item-margin;
     color: $hero-description-color;
     letter-spacing: $todo-letter-spacing;
     font-size: $todo-font-size;
   }
 
-  .container {
-    display: block;
-    position: relative;
-    padding-left: 30px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+  .todo-title {
+    @include hero-title(25px, none);
+    margin: 10px 0;
+    align-items: center;
+  }
 
-    input {
-      position: absolute;
-      opacity: $no-opacity;
-      cursor: pointer;
-      height: $no-height;
-      width: $no-width;
-    }
+  .todo-footer {
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    height: 111px;
+    left: 0;
+    border: none;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: 0 0 6px 6px;
+    @include hero-title(20px, none, inherit);
 
-    .checkmark {
-      position: absolute;
-      top: 3px;
-      left: 0px;
-      height: 15px;
-      width: 15px;
-      background-color: transparent;
-      border: 3px solid $hero-gradient-1;
+  }
+
+  .cnt-list-item {
+    flex-direction: row;
+    display: inherit;
+    justify-content: space-between;
+    align-items: baseline;
+
+    button.pin {
+      background-color: $hero-gradient-1;
       border-radius: 6px;
-      padding: 1px;
+      border: 1px solid $white;
+      color: $white;
+      font-weight: $bold;
+      padding: 8px;
     }
 
-    .checkmark:after {
-      left: 4px;
-      top: 0px;
-      width: 5px;
-      height: 10px;
-      border: solid;
-      border-width: 0 3px 3px 0;
-      -webkit-transform: rotate(45deg);
-      -ms-transform: rotate(45deg);
-      transform: rotate(45deg);
-      content: "";
-      position: absolute;
-      display: none;
-    }
-
-    input:checked ~ .checkmark {
-      color: $hero-gradient-1;
-    }
-
-    input:checked ~ .checkmark:after {
+    .container {
       display: block;
+      position: relative;
+      padding-left: 30px;
+      cursor: pointer;
+      font-size: 22px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+
+      input {
+        position: absolute;
+        opacity: $no-opacity;
+        cursor: pointer;
+        height: $no-height;
+        width: $no-width;
+      }
+
+      .checkmark {
+        position: absolute;
+        top: 3px;
+        left: 0px;
+        height: 15px;
+        width: 15px;
+        background-color: transparent;
+        border: 3px solid $hero-gradient-1;
+        border-radius: 6px;
+        padding: 1px;
+      }
+
+      .checkmark:after {
+        left: 4px;
+        top: 0px;
+        width: 5px;
+        height: 10px;
+        border: solid;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+        content: "";
+        position: absolute;
+        display: none;
+      }
+
+      input:checked ~ .checkmark {
+        color: $hero-gradient-1;
+      }
+
+      input:checked ~ .checkmark:after {
+        display: block;
+      }
     }
   }
 
   .done {
-  
     text-decoration: line-through;
-    color:#9e9e9e;
+    color: $td-done;
 
-    .checkmark {
-      border-color: $hero-gradient-2;
+    .container {
+      .checkmark {
+        border-color: $hero-gradient-2;
+      }
+
+      input:checked ~ .checkmark {
+        color: $hero-gradient-2;
+      }
     }
 
-    input:checked ~ .checkmark {
-      color: $hero-gradient-2;
+    button.pin {
+      text-decoration: inherit;
+      background-color: $hero-gradient-2;
     }
+  }
+
+  .pinned {
+    .container {
+      .checkmark {
+        border-color: $hero-gradient-5;
+      }
+
+      input:checked ~ .checkmark {
+        color: $hero-gradient-5;
+      }
+    }
+    button.pin {
+      background: $hero-gradient-5;
+    }
+  }
+
+  .blur{
+    color: transparent;
+        text-shadow: 0 0 8px $hero-description-color;
   }
 }
