@@ -1,15 +1,16 @@
 @import "./colors.scss";
 @import "./variables.scss";
 
-@mixin center-flex{
-    display: flex;
-    justify-content: center;
+@mixin center-flex {
+  display: flex;
+  justify-content: center;
 }
 
 @mixin glassy($backdrop-filter: 5px) {
   border: $no-border;
   background: $glassy-background-color;
-  box-shadow: $glassy-inset $glassy-offset-x $glassy-offset-y $glassy-blur-radius $glassy-shadow-color;
+  box-shadow: $glassy-inset $glassy-offset-x $glassy-offset-y
+    $glassy-blur-radius $glassy-shadow-color;
   border-radius: $glassy-border-radius;
   border: $glassy-border solid $glassy-border-color;
   backdrop-filter: blur($backdrop-filter);
@@ -22,8 +23,12 @@
   border-radius: $radius;
   color: $white;
   background: $indicator-gradient;
-  box-shadow: $indicator-shadow-inset $indicator-shadow-offset-x $indicator-shadow-offset-y $indicator-shadow-blur-radius $indicator-gradient-1,
-  $indicator-shadow-2-inset $indicator-shadow-2-offset-x $indicator-shadow-2-offset-y $indicator-shadow-2-blur-radius $indicator-gradient-2;
+  box-shadow: $indicator-shadow-inset $indicator-shadow-offset-x
+      $indicator-shadow-offset-y $indicator-shadow-blur-radius
+      $indicator-gradient-1,
+    $indicator-shadow-2-inset $indicator-shadow-2-offset-x
+      $indicator-shadow-2-offset-y $indicator-shadow-2-blur-radius
+      $indicator-gradient-2;
 }
 
 @mixin indicator {
@@ -70,10 +75,11 @@
   color: $hero-description-color;
 }
 
-@mixin hero-title($size: 30px) {
-  color: $hero-title-color;
-  text-shadow: $hero-title-shadow-inset $hero-title-offset-x $hero-title-offset-y $hero-title-shadow;
-  letter-spacing: $hero-title-letter-spacing;
+@mixin hero-title($size: 30px, $letter-spacing: $hero-title-letter-spacing,$color:$hero-title-color) {
+  color: $color;
+  text-shadow: $hero-title-shadow-inset $hero-title-offset-x
+    $hero-title-offset-y $hero-title-shadow;
+  letter-spacing: $letter-spacing;
   font-size: $size;
 }
 
