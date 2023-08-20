@@ -17,6 +17,7 @@ const TodoForm = ({ handleAddItem, className }) => {
   return (
     <form onSubmit={handleSubmit} className={className}>
       <input
+        className="glassy glassy-rounded-border"
         type="text"
         placeholder="Write your task here and press enter"
         value={description}

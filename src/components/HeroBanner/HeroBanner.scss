@@ -7,12 +7,12 @@
 
   height: $hero-banner-height;
   padding: $hero-banner-padding;
-  @include center-flex;
+  @include alignment;
 
-  .hero-banner{
+  .hero-banner {
     width: $mid-width;
   }
-  
+
   .glassy {
     @include glassy(4.5px);
   }
@@ -27,19 +27,16 @@
   }
 
   p.description {
-    @include hero-description;
+    @include hero-title(23px);
   }
 
   ul {
-    width: $full-width;
-    padding: $hero-banner-container-padding;
     display: inherit;
 
     li {
       width: inherit;
-      @include center-flex;
+      @include alignment;
       flex-direction: column;
-
     }
 
     li.todo-list {
@@ -47,7 +44,9 @@
     }
 
     li:first-child {
-      @include hero-input-form;
+      form {
+        @include hero-input-form;
+      }
     }
   }
 }

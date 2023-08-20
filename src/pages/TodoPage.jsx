@@ -16,14 +16,13 @@ const TodoPage = () => {
     setList(updatedList);
   };
 
-  const handlePin = (item) => {
-    const isPinned = item.pinned;
-    updateItem(item.id, { ...item, pinned: !isPinned });
-  };
-
   return (
     <>
-      <HeroBanner handleAddItem={handleAddItem} list={list} updateItem={updateItem} handlePin={handlePin} />
+      <HeroBanner
+        handleAddItem={handleAddItem}
+        list={list}
+        updateItem={updateItem}
+      />
       <IndicatorList list={list} />
     </>
   );

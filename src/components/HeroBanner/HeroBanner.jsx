@@ -4,20 +4,20 @@ import TodoList from "../TodoList/TodoList";
 import "./HeroBanner.scss";
 
 
-const HeroBanner = ({ handleAddItem, list, updateItem, handlePin }) => {
+const HeroBanner = ({ handleAddItem, list, updateItem }) => {
   return (
     <div className="cnt-hero-banner">
-      <ul className=" hero-banner glassy">
+      <ul className=" hero-banner glassy glassy-rounded-border">
         <li>
-          <span className="clarification rotated">It's just</span>
-          <h1 className="title">Another TODO APP</h1>
-          <p className="description">
+          <span className="clarification clarification-rotated">It's just</span>
+          <h1 className="title title-spaced title-shadow">Another TODO APP</h1>
+          <p className="description hero-description">
             Get things done in no time with this super stylish and useful tool
           </p>
           <TodoForm handleAddItem={handleAddItem} />
         </li>
         <li className="todo-list">
-          <TodoList list={list} updateItem={updateItem} handlePin={handlePin} />
+          <TodoList list={list} updateItem={updateItem} />
         </li>
       </ul>
     </div>

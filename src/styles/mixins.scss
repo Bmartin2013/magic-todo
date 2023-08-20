@@ -1,43 +1,42 @@
 @import "./colors.scss";
 @import "./variables.scss";
 
-@mixin center-flex {
+@mixin alignment {
   display: flex;
   justify-content: center;
+
+  &.align-column {
+    flex-direction: column;
+  }
+
+  &.align-items-center {
+    align-items: center;
+  }
 }
 
 @mixin glassy($backdrop-filter: 5px) {
-  border: $no-border;
   background: $glassy-background-color;
-  box-shadow: $glassy-inset $glassy-offset-x $glassy-offset-y
-    $glassy-blur-radius $glassy-shadow-color;
-  border-radius: $glassy-border-radius;
-  border: $glassy-border solid $glassy-border-color;
+  box-shadow: $glassy-shadow;
+
   backdrop-filter: blur($backdrop-filter);
   -webkit-backdrop-filter: blur($backdrop-filter);
-}
 
-@mixin indicator-background($width: 200px, $height: 200px, $radius: 10px) {
-  width: $width;
-  height: $height;
-  border-radius: $radius;
-  color: $white;
-  background: $indicator-gradient;
-  box-shadow: $indicator-shadow-inset $indicator-shadow-offset-x
-      $indicator-shadow-offset-y $indicator-shadow-blur-radius
-      $indicator-gradient-1,
-    $indicator-shadow-2-inset $indicator-shadow-2-offset-x
-      $indicator-shadow-2-offset-y $indicator-shadow-2-blur-radius
-      $indicator-gradient-2;
+  &.glassy-rounded-border {
+    border-radius: $glassy-border-radius;
+    border: $glassy-border;
+  }
 }
 
 @mixin indicator {
-  @include indicator-background;
+  width: $indicator-size;
+  height: $indicator-size;
+  border-radius: $indicator-border-radius;
+  color: $white;
+  background: $indicator-gradient;
+  box-shadow: $indicator-box-shadow;
 
   ul.indicator-info {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+    @include alignment;
     letter-spacing: $indicator-letter-spacing;
     font-weight: $bold;
     padding: $no-padding;
@@ -61,7 +60,7 @@
   padding: $padding-label-x $padding-label-y;
   font-size: $label-font-size;
 
-  &.rotated {
+  &.clarification-rotated {
     position: absolute;
     top: $label-rotated-top;
     left: $label-rotated-left;
@@ -69,36 +68,152 @@
   }
 }
 
-@mixin hero-description($size: 23px) {
+@mixin hero-title($size: 30px) {
+  color: $hero-title-color;
   font-size: $size;
-  text-align: justify;
-  color: $hero-description-color;
-}
 
-@mixin hero-title($size: 30px, $letter-spacing: $hero-title-letter-spacing,$color:$hero-title-color) {
-  color: $color;
-  text-shadow: $hero-title-shadow-inset $hero-title-offset-x
-    $hero-title-offset-y $hero-title-shadow;
-  letter-spacing: $letter-spacing;
-  font-size: $size;
+  &.title-spaced-small {
+    letter-spacing: $hero-default-title-letter-spacing;
+  }
+
+  &.title-spaced {
+    letter-spacing: $hero-title-letter-spacing;
+  }
+
+  &.title-shadow {
+    text-shadow: $hero-title-shadow-inset $hero-title-offset-x
+      $hero-title-offset-y $hero-title-shadow;
+  }
+
+  &.hero-description {
+    text-align: justify;
+    color: $hero-description-color;
+  }
 }
 
 @mixin hero-input-form {
-  form {
-    display: flex;
+  display: flex;
+
+  .glassy {
+    @include glassy;
+  }
+
+  input {
+    flex-grow: 1;
+    padding: $input-padding;
+  }
+
+  ::placeholder {
+    letter-spacing: $todo-letter-spacing;
+  }
+
+  :focus {
+    outline: $none;
+  }
+}
+
+@mixin todo-list-item {
+  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+
+  button.pin {
+    background-color: $hero-gradient-1;
+    border-radius: $todo-pin-button-border-radius;
+    border: $todo-pin-button-border;
+    color: $white;
+    font-weight: $bold;
+    padding: $todo-pin-button-padding;
+  }
+
+  .container {
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 
     input {
-      flex-grow: 1;
-      padding: $input-padding;
-      @include glassy;
+      position: absolute;
+      opacity: $no-opacity;
+      cursor: pointer;
+      height: $no-height;
+      width: $no-width;
     }
 
-    ::placeholder {
-      letter-spacing: $todo-letter-spacing;
+    .checkmark {
+      position: absolute;
+      top: 3px;
+      left: 0px;
+      height: 15px;
+      width: 15px;
+      background-color: transparent;
+      border: 3px solid $hero-gradient-1;
+      border-radius: 6px;
+      padding: 1px;
     }
 
-    :focus {
-      outline: none;
+    .checkmark:after {
+      left: 4px;
+      top: 0px;
+      width: 5px;
+      height: 10px;
+      border: solid;
+      border-width: 0 3px 3px 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+      content: "";
+      position: absolute;
+      display: none;
+    }
+
+    input:checked ~ .checkmark {
+      color: $hero-gradient-1;
+    }
+
+    input:checked ~ .checkmark:after {
+      display: block;
+    }
+  }
+
+  &.done {
+    text-decoration: line-through;
+    color: $td-done;
+
+    .container {
+      .checkmark {
+        border-color: $hero-gradient-2;
+      }
+
+      input:checked ~ .checkmark {
+        color: $hero-gradient-2;
+      }
+    }
+
+    button.pin {
+      text-decoration: inherit;
+      background-color: $hero-gradient-2;
+    }
+  }
+
+  &.pinned {
+    .container {
+      .checkmark {
+        border-color: $hero-gradient-5;
+      }
+
+      input:checked ~ .checkmark {
+        color: $hero-gradient-5;
+      }
+    }
+    button.pin {
+      background: $hero-gradient-5;
     }
   }
 }

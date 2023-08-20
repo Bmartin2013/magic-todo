@@ -1,40 +1,30 @@
 import React from "react";
-import classnames from "classnames";
 import "./todoList.scss";
+import TodoListItem from "./TodoListItem";
 
-const TodoList = ({ list, updateItem, handlePin }) => {
-  const handleMarkItemAsDone = (item) =>
-    updateItem(item.id, { ...item, done: item.done ? !item.done : true });
+const TodoList = ({ list, updateItem }) => {
+  
+  const handleMarkItemAsDone = (id, done) => {
+    const idToMark = list.findIndex((item) => item.id === id);
+    updateItem(id, { ...list[idToMark], done: !done });
+  };
+
+  const handlePin = (id, pinned) => {
+    const idToPin = list.findIndex((item) => item.id === id);
+    updateItem(id, { ...list[idToPin], pinned: !pinned });
+  };
 
   return (
-    <div class="cnt-todo-list">
+    <div class="cnt-todo-list align-column">
+      <strong class="todo-title title-spaced-small">List Preview</strong>
       <ul>
-        <li class="todo-title">List Preview</li>
         {list?.map((item) => (
-          <li
-            key={item.id}
-            className={classnames("cnt-list-item", {
-              done: item.done,
-              pinned: item.pinned,
-            })}
-          >
-            <label class="container">
-              <input
-                type="checkbox"
-                onChange={() => handleMarkItemAsDone(item)}
-              />
-              <span className="checkmark"></span>
-              {item.description}
-            </label>
-            <button onClick={() => handlePin(item)} className="pin">
-              {item.pinned ? "Pinned" : "Pin"}
-            </button>
-          </li>
+          <TodoListItem
+            handleMarkItemAsDone={handleMarkItemAsDone}
+            handlePin={handlePin}
+            {...item}
+          />
         ))}
-        {/* blur the ones that are covered by this footer */}
-        {list.length > 5 && (
-          <li className="todo-footer">Click here to enjoy the full app</li>
-        )}
       </ul>
     </div>
   );
