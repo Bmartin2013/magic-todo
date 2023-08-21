@@ -1,16 +1,33 @@
 import React from "react";
 import classnames from "classnames";
-import "./todoList.scss";
+import TodoCheckbox from "./TodoCheckbox";
+import "./todoListItem.scss";
 
-const TodoListItem = ({ handleMarkItemAsDone, handlePin, id, description, done, pinned }) => {
+const TodoListItem = ({
+  handleMarkItemAsDone,
+  handlePin,
+  id,
+  description,
+  done,
+  pinned,
+  className,
+}) => {
+  const handlePinned = () => handlePin(id, !pinned);
+  const handleDone = () => handleMarkItemAsDone(id, !done);
+
   return (
-    <li key={id} className={classnames("cnt-list-item", { done, pinned })}>
-      <label class="container">
-        <input type="checkbox" onChange={() => handleMarkItemAsDone(id, done)} />
-        <span className="checkmark"></span>
-        {description}
-      </label>
-      <button onClick={() => handlePin(id,pinned)} className="pin">
+    <li
+      className={classnames("todo-list-item", {
+        [className]: !!className,
+        done,
+        pinned,
+      })}
+    >
+      <TodoCheckbox
+        handleMarkItemAsDone={handleDone}
+        description={description}
+      />
+      <button onClick={handlePinned} className="pin">
         {pinned ? "Pinned" : "Pin"}
       </button>
     </li>

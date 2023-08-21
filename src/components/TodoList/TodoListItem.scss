@@ -1,0 +1,52 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
+@import "../../styles/colors.scss";
+
+$cnt-todo-list-width: 90%;
+$cnt-todo-list-height: 100%;
+$todo-title-margin: 10px;
+$todo-title-size: 25px;
+$todo-item-blurred-shadow: 0 0 8px $hero-description-color;
+
+.todo-list-item {
+  button.pin {
+    background-color: $hero-gradient-1;
+    border-radius: $todo-pin-button-border-radius;
+    border: $todo-pin-button-border;
+    color: $white;
+    font-weight: $bold;
+    padding: $todo-pin-button-padding;
+  }
+
+  &.done {
+    text-decoration: line-through;
+    color: $td-done;
+
+    button.pin {
+      text-decoration: inherit;
+      background-color: $hero-gradient-2;
+    }
+
+    span {
+      border-color: $hero-gradient-2;
+    }
+
+    input:checked ~ span {
+      color: $hero-gradient-2;
+    }
+  }
+
+  &.pinned {
+    button.pin {
+      background-color: $hero-gradient-5;
+    }
+
+    span {
+      border-color: $hero-gradient-5;
+    }
+
+    input:checked ~ span {
+      color: $hero-gradient-5;
+    }
+  }
+}

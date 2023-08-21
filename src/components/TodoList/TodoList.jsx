@@ -3,15 +3,14 @@ import "./todoList.scss";
 import TodoListItem from "./TodoListItem";
 
 const TodoList = ({ list, updateItem }) => {
-  
   const handleMarkItemAsDone = (id, done) => {
     const idToMark = list.findIndex((item) => item.id === id);
-    updateItem(id, { ...list[idToMark], done: !done });
+    updateItem(id, { ...list[idToMark], done: done });
   };
 
   const handlePin = (id, pinned) => {
     const idToPin = list.findIndex((item) => item.id === id);
-    updateItem(id, { ...list[idToPin], pinned: !pinned });
+    updateItem(id, { ...list[idToPin], pinned: pinned });
   };
 
   return (
@@ -22,6 +21,7 @@ const TodoList = ({ list, updateItem }) => {
           <TodoListItem
             handleMarkItemAsDone={handleMarkItemAsDone}
             handlePin={handlePin}
+            className="cnt-list-item"
             {...item}
           />
         ))}

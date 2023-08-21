@@ -1,0 +1,62 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
+@import "../../styles/colors.scss";
+
+$todo-title-margin: 10px;
+$todo-title-size: 25px;
+$todo-item-blurred-shadow: 0 0 8px $hero-description-color;
+
+.cnt-todo-checkbox {
+  display: block;
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  input {
+    position: absolute;
+    opacity: $no-opacity;
+    cursor: pointer;
+    height: $no-height;
+    width: $no-width;
+  }
+
+  span {
+    position: absolute;
+    top: 3px;
+    left: 0px;
+    height: 15px;
+    width: 15px;
+    background-color: transparent;
+    border: 3px solid $hero-gradient-1;
+    border-radius: 6px;
+    padding: 1px;
+  }
+
+  .cnt-todo-checkmark:after {
+    left: 4px;
+    top: 0px;
+    width: 5px;
+    height: 10px;
+    border: solid;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  input:checked ~ span {
+    color: $hero-gradient-1;
+  }
+
+  input:checked ~ span:after {
+    display: block;
+  }
+}
