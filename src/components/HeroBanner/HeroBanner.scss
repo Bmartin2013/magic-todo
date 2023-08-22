@@ -11,6 +11,24 @@
 
   .hero-banner {
     width: $mid-width;
+    display: inherit;
+  }
+
+  .hero-banner-info,
+  .todo-list {
+    width: inherit;
+    @include alignment;
+  }
+
+  .hero-banner-info {
+    padding: 3%;
+    form {
+      @include hero-input-form;
+    }
+  }
+
+  .todo-list {
+    justify-content: end;
   }
 
   .glassy {
@@ -30,23 +48,4 @@
     @include hero-title(23px);
   }
 
-  ul {
-    display: inherit;
-
-    li {
-      width: inherit;
-      @include alignment;
-      flex-direction: column;
-    }
-
-    li.todo-list {
-      align-items: end;
-    }
-
-    li:first-child {
-      form {
-        @include hero-input-form;
-      }
-    }
-  }
 }

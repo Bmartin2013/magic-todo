@@ -1,6 +1,5 @@
 import React from "react";
 import classnames from "classnames";
-import TodoCheckbox from "./TodoCheckbox";
 import "./todoListItem.scss";
 
 const TodoListItem = ({
@@ -23,10 +22,10 @@ const TodoListItem = ({
         pinned,
       })}
     >
-      <TodoCheckbox
-        handleMarkItemAsDone={handleDone}
-        description={description}
-      />
+      <label className="cnt-todo-checkbox">
+        <input type="checkbox" onChange={handleDone} />
+        {description}
+      </label>
       <button onClick={handlePinned} className="pin">
         {pinned ? "Pinned" : "Pin"}
       </button>

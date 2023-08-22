@@ -15,8 +15,7 @@ const TodoList = ({ list, updateItem }) => {
 
   return (
     <div class="cnt-todo-list align-column">
-      <strong class="todo-title title-spaced-small">List Preview</strong>
-      <div className="todo-footer">Click here to enjoy the full app</div>
+      <strong className="todo-title title-spaced-small">List Preview</strong>
       <ul>
         {list?.map((item) => (
           <TodoListItem

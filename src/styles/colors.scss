@@ -1,6 +1,6 @@
 // COLORS
 $white: white;
-$black:black;
+$black: black;
 $hero-gradient-1: #ff85ca;
 $hero-gradient-2: #ee90dd;
 $hero-gradient-3: #d99bec;
@@ -15,7 +15,7 @@ $hero-gradient-11: #50f1fb;
 $hero-gradient-12: #5ffbf1;
 $hero-description-color: #413f3f;
 $hero-title-color: #3f51b5;
-$hero-title-shadow:#9e9e9e;
+$hero-title-shadow: #9e9e9e;
 $indicator-gradient-1: rgba(0, 0, 0, 0.22);
 $indicator-gradient-2: rgba(255, 255, 255, 0.25);
 $glassy-background-color: rgba(255, 255, 255, 0.3);
@@ -45,3 +45,10 @@ $indicator-gradient: linear-gradient(
   $indicator-gradient-1,
   $indicator-gradient-2
 );
+
+// button enjoy full app
+$enjoy-full-app-1: #e91e63;
+$enjoy-full-app-2: #00bcd4;
+
+// scroll 
+$scroll-background:#ebebeb;

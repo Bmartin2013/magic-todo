@@ -25,7 +25,7 @@ $glassy-border: $glassy-border-thickness solid $glassy-border-color;
 
 // INDICATOR
 $indicator-width: 50%;
-$indicator-margin-x: 2%;
+$indicator-margin-x: 4%;
 $indicator-letter-spacing:2px;
 $indicator-title-margin: 10px;
 $indicator-title-font: 20px;
@@ -66,8 +66,8 @@ $todo-pin-button-padding:8px;
 $padding-label-x:3px;
 $padding-label-y:31px;
 $label-font-size:21px;
-$label-rotated-top:4px;
-$label-rotated-left:-25px;
+$label-rotated-top:15px;
+$label-rotated-left:-22px;
 $label-transform-rotate:rotate(333deg);
 
 $hero-title-shadow-inset:2px; 
