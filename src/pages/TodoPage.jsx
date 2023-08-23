@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import HeroBanner from "../components/HeroBanner/HeroBanner";
 import IndicatorList from "../components/Indicator/IndicatorList";
-import EnjoyAppBtn from "../components/EnjoyAppBtn/EnjoyAppBtn";
 
 const TodoPage = () => {
   const [list, setList] = useState([]);
@@ -25,7 +24,6 @@ const TodoPage = () => {
         updateItem={updateItem}
       />
       <IndicatorList list={list} />
-      {/* <EnjoyAppBtn/> */}
     </>
   );
 };

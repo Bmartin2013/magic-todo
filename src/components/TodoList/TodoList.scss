@@ -9,10 +9,9 @@ $todo-title-size: 25px;
 $todo-item-blurred-shadow: 0 0 8px $hero-description-color;
 
 .cnt-todo-list {
-  width: $cnt-todo-list-width;
-  min-height: $cnt-todo-list-height;
   display: flex;
   flex-direction: column;
+  min-height: 100%;
   @include glassy;
 
   .todo-title {
@@ -21,9 +20,19 @@ $todo-item-blurred-shadow: 0 0 8px $hero-description-color;
     align-self: center;
   }
 
+  .todo-description{
+    margin: auto;
+    padding: 0 1em 2em 1em;
+    font-size: 21px;
+    letter-spacing: 1px;
+    color: $td-done;
+    text-align: center;
+  }
+
   ul {
     overflow: auto;
     padding: 0 40px;
+    max-height: 20em;
   }
 
   li {

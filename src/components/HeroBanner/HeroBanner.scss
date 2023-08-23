@@ -4,31 +4,22 @@
 
 .cnt-hero-banner {
   background-image: $hero-gradient;
-
-  height: $hero-banner-height;
   padding: $hero-banner-padding;
-  @include alignment;
 
   .hero-banner {
-    width: $mid-width;
-    display: inherit;
-  }
-
-  .hero-banner-info,
-  .todo-list {
-    width: inherit;
-    @include alignment;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    margin: auto;
+    width:70%;
   }
 
   .hero-banner-info {
-    padding: 3%;
+    padding: 2em;
     form {
       @include hero-input-form;
     }
-  }
-
-  .todo-list {
-    justify-content: end;
   }
 
   .glassy {
@@ -48,4 +39,10 @@
     @include hero-title(23px);
   }
 
+  @media screen and (max-width: 500px) {
+    .hero-banner {
+      width: 100%;
+      grid-template-columns: 1fr;
+    }
+  }
 }
