@@ -28,25 +28,24 @@
 }
 
 @mixin indicator {
-  width: $indicator-size;
-  height: $indicator-size;
+  padding: $indicator-padding;
   border-radius: $indicator-border-radius;
   color: $white;
   background: $indicator-gradient;
   box-shadow: $indicator-box-shadow;
 
-  ul.indicator-info {
+  .indicator-info {
     @include alignment;
     letter-spacing: $indicator-letter-spacing;
     font-weight: $bold;
     padding: $no-padding;
 
-    li:first-child {
+    :first-child {
       margin: $indicator-title-margin;
       font-size: $indicator-title-font;
     }
 
-    li:nth-child(2) {
+    :nth-child(2) {
       font-size: $indicator-value-font;
     }
   }

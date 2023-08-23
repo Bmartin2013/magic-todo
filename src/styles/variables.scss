@@ -24,6 +24,7 @@ $glassy-blur-radius $glassy-shadow-color;
 $glassy-border: $glassy-border-thickness solid $glassy-border-color;
 
 // INDICATOR
+$indicator-list-gap:5em;
 $indicator-width: 50%;
 $indicator-margin-x: 4%;
 $indicator-letter-spacing:2px;
@@ -46,6 +47,7 @@ $indicator-shadow-2-offset-y $indicator-shadow-2-blur-radius
 $indicator-gradient-2;
 $indicator-size: 200px;
 $indicator-border-radius:10px;
+$indicator-padding:1em;
 
 //HERO BANNER
 $hero-banner-height:500px;

@@ -3,12 +3,12 @@
 @import "../../styles/variables.scss";
 
 .cnt-indicators {
-  display: flex;
-  width: $indicator-width;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 12em);
+  grid-gap: $indicator-list-gap;
   align-items: center;
-  margin: $indicator-margin-x auto;
-  padding-left: $no-padding;
+  justify-content: center;
+  margin: 5em 0;
 
   .indicator {
     @include indicator;

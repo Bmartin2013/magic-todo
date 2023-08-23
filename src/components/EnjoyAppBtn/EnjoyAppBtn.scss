@@ -1,17 +1,12 @@
 @import "../../styles/colors.scss";
 
 .cnt-enjoy-full-app-button {
-  position: absolute;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100px;
-  
+    display: inherit;
+    align-items: center;
+    justify-content: center;
 
   button {
-    padding: 20px 60px;
+    padding: 1em 4em;
     border: none;
     outline: none;
     position: relative;

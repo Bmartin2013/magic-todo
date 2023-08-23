@@ -25,7 +25,7 @@ const TodoPage = () => {
         updateItem={updateItem}
       />
       <IndicatorList list={list} />
-      <EnjoyAppBtn/>
+      {/* <EnjoyAppBtn/> */}
     </>
   );
 };

@@ -1,9 +1,8 @@
 import React, { useMemo } from "react";
-import Indicator from "./Indicator";
 import "./IndicatorList.scss";
+import classNames from "classnames";
 
 const IndicatorList = ({ list }) => {
- 
   const completedItems = useMemo(
     () => list.filter((item) => item.done).length,
     [list]
@@ -22,9 +21,12 @@ const IndicatorList = ({ list }) => {
 
   return (
     <ul className="cnt-indicators">
-      {indicatorMetadata.map((item, id) => (
-        <li key={id}>
-          <Indicator {...item} className={`indicator ${item.color}`} />
+      {indicatorMetadata.map(({ title, value, color }, id) => (
+        <li key={id} className={classNames("indicator ", { [color]: !!color })}>
+          <div className="indicator-info align-column align-items-center">
+            <span>{title}</span>
+            <span>{value}</span>
+          </div>
         </li>
       ))}
     </ul>
