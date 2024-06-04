@@ -4,6 +4,7 @@ import IndicatorList from "../components/Indicator/IndicatorList";
 
 const TodoPage = () => {
   const [list, setList] = useState([]);
+  const [toggleIndicators, setToggleIndicators] = useState(false);
 
   const handleAddItem = (addItem) => {
     setList([...list, addItem]);
@@ -22,8 +23,9 @@ const TodoPage = () => {
         handleAddItem={handleAddItem}
         list={list}
         updateItem={updateItem}
+        handleToggleIndicators={() => setToggleIndicators(!toggleIndicators)}
       />
-      <IndicatorList list={list} />
+      {toggleIndicators && <IndicatorList list={list} />}
     </>
   );
 };
