@@ -85,7 +85,7 @@
   }
 
   &.hero-description {
-    text-align: justify;
+    text-align: center;
     color: $hero-description-color;
   }
 }
@@ -104,6 +104,7 @@
 
   ::placeholder {
     letter-spacing: $todo-letter-spacing;
+    text-align: center;
   }
 
   :focus {
