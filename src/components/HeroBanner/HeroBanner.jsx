@@ -1,8 +1,7 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import TodoList from "../TodoList/TodoList";
 import "./HeroBanner.scss";
-import HeroBannerMain from "../HeroBannerMain/HeroBannerMain";
-import HeroBannerAI from "../HeroBannerAI/HeroBannerAI";
+import HeroHeader from "../HeroHeader/HeroHeader";
 
 const HeroBanner = ({
   handleAddItem,
@@ -17,11 +16,11 @@ const HeroBanner = ({
       <div className="hero-banner glassy">
         <span className="clarification clarification-rotated">It's just</span>
         <div className="hero-banner-container">
-          {isSubmitWithAi ? (
-            <HeroBannerMain handleAddItem={handleAddItem} />
-          ) : (
-            <HeroBannerAI handleAddItem={handleAddItem} />
-          )}
+          <HeroHeader
+            handleAddItem={handleAddItem}
+            isSubmitWithAi={isSubmitWithAi}
+          />
+
           <div className="hero-footer">
             <hr className="divider"></hr>
             <div className="footer-buttons">
