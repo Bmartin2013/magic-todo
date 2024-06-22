@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import TodoList from "../TodoList/TodoList";
 import "./HeroBanner.scss";
-import HeroHeader from "../HeroHeader/HeroHeader";
+import HeroHeader from "./Header";
+import Footer from "./Footer";
 
 const HeroBanner = ({
   handleAddItem,
   list,
   updateItem,
   handleToggleIndicators,
+  handleSubmitWithAi,
+  isSubmitWithAi
 }) => {
-  const [isSubmitWithAi, setIsSubmitWithAI] = useState(false);
-
   return (
     <div className="cnt-hero-banner">
       <div className="hero-banner glassy">
@@ -21,17 +22,11 @@ const HeroBanner = ({
             isSubmitWithAi={isSubmitWithAi}
           />
 
-          <div className="hero-footer">
-            <hr className="divider"></hr>
-            <div className="footer-buttons">
-              <button onClick={() => setIsSubmitWithAI(!isSubmitWithAi)}>
-                Complete with AI
-              </button>
-              <button onClick={handleToggleIndicators}>
-                Toggle Indicators
-              </button>
-            </div>
-          </div>
+          <Footer
+            handleToggleIndicators={handleToggleIndicators}
+            handleSubmitWithAi={handleSubmitWithAi}
+            isSubmitWithAi={isSubmitWithAi}
+          ></Footer>
         </div>
         <TodoList list={list} updateItem={updateItem} />
       </div>

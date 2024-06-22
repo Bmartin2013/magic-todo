@@ -19,7 +19,7 @@ const TodoForm = ({ handleAddItem, className }) => {
       <input
         className="glassy glassy-rounded-border"
         type="text"
-        placeholder="Write your task here and press enter"
+        placeholder="Write here"
         value={description}
         onChange={(e) => {
           setDescription(e.target.value);
