@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import HeroBanner from "../components/HeroBanner/HeroBanner";
 import IndicatorList from "../components/IndicatorList/IndicatorList";
+import TodoList from "../components/TodoList/TodoList";
 
 const TodoPage = () => {
   const [list, setList] = useState([]);
@@ -22,12 +23,12 @@ const TodoPage = () => {
     <>
       <HeroBanner
         handleAddItem={handleAddItem}
-        list={list}
-        updateItem={updateItem}
         handleToggleIndicators={() => setToggleIndicators(!toggleIndicators)}
         handleSubmitWithAi={() => setIsSubmitWithAI(!isSubmitWithAi)}
         isSubmitWithAi={isSubmitWithAi}
-      />
+      >
+        <TodoList list={list} updateItem={updateItem} />
+      </HeroBanner>
       {toggleIndicators && <IndicatorList list={list} />}
     </>
   );

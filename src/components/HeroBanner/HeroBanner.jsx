@@ -1,16 +1,14 @@
-import React, { useState } from "react";
-import TodoList from "../TodoList/TodoList";
+import React from "react";
 import "./HeroBanner.scss";
 import HeroHeader from "./Header";
 import Footer from "./Footer";
 
 const HeroBanner = ({
   handleAddItem,
-  list,
-  updateItem,
   handleToggleIndicators,
   handleSubmitWithAi,
-  isSubmitWithAi
+  isSubmitWithAi,
+  children
 }) => {
   return (
     <div className="cnt-hero-banner">
@@ -28,7 +26,7 @@ const HeroBanner = ({
             isSubmitWithAi={isSubmitWithAi}
           ></Footer>
         </div>
-        <TodoList list={list} updateItem={updateItem} />
+        {children}
       </div>
     </div>
   );
