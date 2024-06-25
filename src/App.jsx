@@ -1,11 +1,11 @@
 import React from "react"
-import TodoPage from "./pages/TodoPage";
 import "./app.scss"
 import "./fonts/stylesheet.css"
+import Todo from "./pages/Todo"
 
 
 function App(){
-    return <TodoPage/>
+    return <Todo/>
 }
 
 export default App;

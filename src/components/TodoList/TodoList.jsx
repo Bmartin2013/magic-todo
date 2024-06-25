@@ -16,7 +16,7 @@ const TodoList = ({ list, updateItem }) => {
   return (
     <div class="cnt-todo-list align-column">
       <strong className="todo-title title-spaced-small">List Preview</strong>
-      {list.length === 0 ? (
+      {list?.length === 0 ? (
         <p className="todo-description">Create your first task to start filling the list</p>
       ) : (
         <ul>
