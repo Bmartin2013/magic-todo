@@ -49,7 +49,7 @@ const ManualList = ({
         handleToggleIndicators={handleToggleIndicators}
         headerProps={headerProps}
         handleSubmitWithAi={handleSubmitWithAi}
-        aiTitle={"Back to TODO"}
+        aiTitle={"Ask to the AI"}
         description={description}
         setDescription={setDescription}
       >

@@ -13,15 +13,20 @@ export const load = async (aiQuestion) => {
             model: "gpt-3.5-turbo",
         });
 
+        const aiResponse = completion.choices[0].message.content;
 
         const regex = /\d+\.\s.+?(?=\n|$)/g;
-        const aiResponse = completion.choices[0].message.content;
-        console.log("aiQuestion", aiQuestion, "aiResponse", aiResponse)
+        const items = aiResponse.match(regex);
 
-        const items = aiResponse.match(regex).map(punto => punto.slice(0, -1).trim());
+        if (!items) {
+            return [aiResponse.trim()];
+        }
 
-        return items;
+        // Clean the items
+        const cleanedItems = items.map(item => item.trim());
+        return cleanedItems;
+
     } catch (error) {
         console.error("Error fetching or processing completion:", error);
     }
-}
+};
