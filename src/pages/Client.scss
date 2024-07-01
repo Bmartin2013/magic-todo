@@ -1,0 +1,70 @@
+$font-stack: Helvetica, sans-serif;
+$primary-color: #3498db;
+
+.root {
+  width: 90%;
+}
+
+body {
+  font-family: $font-stack;
+  background-color: #f4f4f4;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  background: white;
+  padding: 60px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 100%;
+
+  h1 {
+    color: $primary-color;
+    margin-bottom: 20px;
+  }
+
+  .file-input,
+  .ai-trainer,
+  .result {
+    margin-bottom: 20px;
+    text-align: left;
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input[type="file"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    textarea {
+      height: 100px;
+      resize: none;
+    }
+  }
+
+  .ai-trainer button {
+    padding: 10px;
+    border: none;
+    background-color: $primary-color;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+        background-color: darken($primary-color, 10%);
+    }
+}
+}
